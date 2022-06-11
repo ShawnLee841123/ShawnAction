@@ -12,6 +12,7 @@ namespace UnrealBuildTool.Rules
 				new string[] {
 					// ... add public include paths required here ...
 					System.IO.Path.Combine(ModuleDirectory, "Public"),
+					System.IO.Path.Combine(ModuleDirectory, "Classes"),
 				}
 				);
 
