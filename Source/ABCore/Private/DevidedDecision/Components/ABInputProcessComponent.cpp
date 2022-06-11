@@ -1,5 +1,5 @@
 #include "DevidedDecision/Components/ABInputProcessComponent.h"
-#include "DevidedDecision/Components/ABDevidedBaseComponent.h"
+#include "DevidedDecision/Components/ABStatusBehaviorComponent.h"
 #include "GameFramework/Pawn.h"
 #include "DevidedDecision/ComponentDatas/TaskNode/ABDDTaskNodeScratchPad.h"
 
@@ -106,7 +106,7 @@ void UABInputProcessComponent::CheckRestartTree(FName _inputName)
 		return;
 	}
 
-	UABDevidedBaseComponent* behavicData = Cast<UABDevidedBaseComponent>(GetOwner()->GetComponentByClass(UABDevidedBaseComponent::StaticClass()));
+	UABStatusBehaviorComponent* behavicData = Cast<UABStatusBehaviorComponent>(GetOwner()->GetComponentByClass(UABStatusBehaviorComponent::StaticClass()));
 
 	bool bRestartSuccess = false;
 	if (nullptr != behavicData)

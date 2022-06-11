@@ -92,6 +92,7 @@ UABInputProcessComponent* UABDDTaskNodeBase::GetRoleInputProcessComponent(UBehav
 
 	//UABInputProcessComponent* InputComp = role->GetRoleInputProcessComponent();
 	//return InputComp;
+	return nullptr;
 }
 #pragma endregion
 
