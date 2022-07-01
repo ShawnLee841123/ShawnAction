@@ -86,13 +86,18 @@ void UABDDTaskNodeBase::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeM
 
 UABInputProcessComponent* UABDDTaskNodeBase::GetRoleInputProcessComponent(UBehaviorTreeComponent& _ownerComp) const
 {
-	//APawn* role = Cast<APawn>(_ownerComp.GetOwner());
-	//if (nullptr == role)
-	//	return nullptr;
+	APawn* role = Cast<APawn>(_ownerComp.GetOwner());
+	if (nullptr == role)
+		return nullptr;
 
-	//UABInputProcessComponent* InputComp = role->GetRoleInputProcessComponent();
-	//return InputComp;
-	return nullptr;
+	UActorComponent* tempCom = role->GetComponentByClass(UABInputProcessComponent::StaticClass());
+	if (nullptr == tempCom)
+	{
+		return nullptr;
+	}
+	
+	UABInputProcessComponent* InputComp = Cast<UABInputProcessComponent>(tempCom);
+	return InputComp;
 }
 #pragma endregion
 

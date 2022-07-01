@@ -28,6 +28,9 @@ protected:
 
 #pragma region Variable
 	UBlackboardComponent* Blackboard;
+
+	UPROPERTY(EditAnywhere, Category = "Decision Asset | Tree")
+	UBehaviorTree* RuningTree;
 #pragma endregion
 
 };

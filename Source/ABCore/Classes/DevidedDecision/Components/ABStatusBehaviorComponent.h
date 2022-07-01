@@ -25,7 +25,7 @@ public:
 	UFUNCTION()
 		void OnReciveRestartTreeEvent();
 
-	UFUNCTION(BlueprintCallable, Category = "Run BT Tree")
+	UFUNCTION(BlueprintCallable, Category = "Run Status Behavior Tree")
 		void RunBehaviorTree();
 
 protected:

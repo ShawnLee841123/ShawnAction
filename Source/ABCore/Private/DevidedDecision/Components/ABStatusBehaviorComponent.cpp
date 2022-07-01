@@ -111,7 +111,27 @@ void UABStatusBehaviorComponent::OnReciveRestartTreeEvent()
 }
 void UABStatusBehaviorComponent::RunBehaviorTree()
 {
-	
+	if (nullptr == RuningTree)
+	{
+		return;
+	}
+
+	bool bSuccess = false;
+	UBlackboardComponent* blackboardCom = nullptr;
+	if (RuningTree->BlackboardAsset)
+	{
+		if (nullptr == blackboardCom)
+		{
+			bSuccess = UseBlackboard(RuningTree->BlackboardAsset, blackboardCom);
+		}
+
+		bSuccess = true;
+	}
+
+	if (bSuccess)
+	{
+		StartTree(*RuningTree, EBTExecutionMode::Looped);
+	}
 }
 void UABStatusBehaviorComponent::BeginPlay()
 {

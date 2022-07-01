@@ -31,7 +31,7 @@ enum class ABESystemStatusGroupType : uint8
 };
 
 UENUM(BlueprintType)
-enum class ABEDeathStatusGroupType : uint8
+enum class ABEAliveStatusGroupType : uint8
 {
 	ABEDGST_Live = 0,				//	live status
 	ABEDGST_Dead,					//	death status
@@ -59,6 +59,13 @@ enum class ABECombatStatusGroupType : uint8
 {
 	ABECGST_Unfight = 0,			//	unfight status
 	ABECGST_Fight,					//	fight status
+};
+
+enum class ABEStanceStatusGroupType : uint8
+{
+	ABESSGT_Standing = 0,
+	ABESSGT_Crouch,
+	ABESSGT_Crawling,
 };
 
 UENUM(BlueprintType)
