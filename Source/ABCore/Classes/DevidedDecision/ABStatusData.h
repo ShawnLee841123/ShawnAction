@@ -10,15 +10,15 @@ UENUM(BlueprintType)
 enum class ABEStatusGroupType : uint8
 {
 	ABESGT_Invalid = 0 UMETA(Hidden),
-	ABESGT_System UMETA(DisplayName = "GroupSystem"),		//	System Group
-	ABESGT_Alive UMETA(DisplayName = "GroupAlive"),
-	ABESGT_Riding UMETA(DisplayName = "GroupRiding"),
-	ABESGT_Evironment UMETA(DisplayName = "GroupEvironment"),
-	ABESGT_Combat UMETA(DisplayName = "GroupCombat"),
-	ABESGT_Stance UMETA(DisplayName = "GroupStance"),
-	ABESGT_Control UMETA(DisplayName = "GroupControl"),
-	ABESGT_Posture UMETA(DisplayName = "GroupPosture"),
-	ABESGT_Behit UMETA(DisplayName = "GroupBehit"),
+	ABESGT_System UMETA(DisplayName = "GroupSystem"),			//	System Group
+	ABESGT_Alive UMETA(DisplayName = "GroupAlive"),				//	Live or dead
+	ABESGT_Riding UMETA(DisplayName = "GroupRiding"),			//	none, driver or passager
+	ABESGT_Evironment UMETA(DisplayName = "GroupEvironment"),	//	air, ground or water
+	ABESGT_Combat UMETA(DisplayName = "GroupCombat"),			//	fight or unfight
+	ABESGT_Stance UMETA(DisplayName = "GroupStance"),			//	standing crouching or crawling
+	ABESGT_Control UMETA(DisplayName = "GroupControl"),			//	idle run spring jump turnto doge.....
+	ABESGT_Posture UMETA(DisplayName = "GroupPosture"),			//	armed or unarmed
+	ABESGT_Behit UMETA(DisplayName = "GroupBehit"),				//	none, normal, Stiff, kickback, kickflew or kickdown
 
 	ABESGT_MAX,
 };
@@ -43,6 +43,7 @@ enum class ABERidingStatusGroupType : uint8
 {
 	ABERGST_UnRiding = 0,			//	unriding status
 	ABERGST_Driving,				//	riding driver status
+	ABERGST_Passager,				//	passager status
 };
 
 UENUM(BlueprintType)
@@ -95,6 +96,7 @@ enum class ABEBehitStatusGroupType : uint8
 	ABEBGST_None = 0,					//	no status
 	ABEBGST_Default,					//	default status
 	ABEBGST_Stiff,						//	stiff status
-	ABEBGST_Floating,					//	floating status
+	ABEBGST_KnockBack,					//	floating status
 	ABEBGST_KnockFlew,					//	knock flew status
+	ABEBGST_KnockDown,
 };
