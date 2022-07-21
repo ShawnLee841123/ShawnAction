@@ -10,6 +10,7 @@
 #include "UObject/ObjectMacros.h"
 #include "Components/ActorComponent.h"
 #include "../ABStatusData.h"
+#include "../ComponentDatas/Service/StatusService/ABBaseStatusService.h"
 
 #include "ABStatusDataComponent.generated.h"
 
@@ -31,7 +32,7 @@ public:
 	virtual bool CheckFitStatus(int32 _statusId) { return false; }
 
 	UPROPERTY(EditAnywhere, Instanced, Category = "Status Service")
-		UBaseStatusService* StatusService;
+		UABBaseStatusService* StatusService;
 };
 
 UCLASS(EditInlineNew, Blueprintable)
@@ -109,7 +110,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Status Service")
 		ABEStanceStatusGroupType StanceStatus;
 
-	virtual bool CheckFitStatus(int32 _statusId) override { return (ABEStanceStatusGroupType)_statusId == CombatStatus; }
+	virtual bool CheckFitStatus(int32 _statusId) override { return (ABEStanceStatusGroupType)_statusId == StanceStatus; }
 };
 
 UCLASS(EditInlineNew, Blueprintable)
@@ -192,9 +193,9 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 #pragma region Status Function
-	virtual bool SetStatusGroupState(ABEStatusGroupType StatusGroup, int32 StatusValue, int32 OldValue);
-	virtual bool SetStatusGroupState(int32 StatusGroup, int32 StatusValue, int32 OldValue);
-	virtual bool SetState(int64 GlobalStateValue);
+	virtual bool SetStatusGroupState(ABEStatusGroupType StatusGroup, int32 StatusValue, int32 OldValue, bool CalculateFlag = true);
+	virtual bool SetStatusGroupState(int32 StatusGroup, int32 StatusValue, int32 OldValue, bool CalculateFlag = true);
+	virtual bool SetState(int32 GlobalStateValue, bool CalculateFlag = true);
 	virtual int32 GetStatusGroupState(int32 StatusGroup);
 	virtual int32 GetStatusGroupState(ABEStatusGroupType StatusGroup);
 #pragma endregion
@@ -202,8 +203,11 @@ public:
 #pragma region Flag Function
 	virtual bool AddSkillFlag(int32 FlagID);
 	virtual bool AddBuffFlag(int32 FlagID);
+	virtual bool AddStatusFlag(int32 FlagID);
+	virtual bool RemoveStatusFlag(int32 FlagID);
 	virtual bool RemoveSkillFlag(int32 FlagID);
 	virtual bool RemoveBuffFlag(int32 FlagID);
+
 	virtual uint64 GetCurrentBigFlag();
 #pragma endregion
 

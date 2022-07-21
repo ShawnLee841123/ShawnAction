@@ -62,6 +62,7 @@ enum class ABECombatStatusGroupType : uint8
 	ABECGST_Fight,					//	fight status
 };
 
+UENUM(BlueprintType)
 enum class ABEStanceStatusGroupType : uint8
 {
 	ABESSGT_Standing = 0,
@@ -100,3 +101,41 @@ enum class ABEBehitStatusGroupType : uint8
 	ABEBGST_KnockFlew,					//	knock flew status
 	ABEBGST_KnockDown,
 };
+
+enum EStatusFlagCheckBit
+{
+	//	0~5
+	ESFCB_None = 0,
+	ESFCB_Idle,					//1
+	ESFCB_Move,					//2
+	ESFCB_Spring,				//4
+	ESFCB_Doge,					//8
+	ESFCB_Jump,					//16
+	//	6~10
+	ESFCB_ChangePosture,		//32
+	ESFCB_Stiff,				//64
+	ESFCB_Knockback,			//128
+	ESFCB_Knockflew,			//256
+	ESFCB_Knockdown,			//512
+	//	11~15
+	ESFCB_UseSkill,				//1024
+};
+
+#pragma region Status Bit Value
+
+#pragma endregion
+
+
+
+static int32 TransStatusValue2GlobalValue(int32 StatusGroup, int32 StatusValue)
+{
+	int globalStatusId = (StatusGroup << 16) + StatusValue;
+	return globalStatusId;
+}
+
+static void TransGlobalStatusValue2Prototype(int32 GlobalValue, int32& StatusGroup, int32& StatusValue)
+{
+	int tempValue = GlobalValue;
+	StatusValue = tempValue & 0x0000FFFF;
+	StatusGroup = ((tempValue & 0xFFFF0000) >> 16);
+}
